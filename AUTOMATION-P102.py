@@ -1,44 +1,41 @@
+import random
 import dropbox
 import time
+import os
 
 
 start_time = time.time()
 
-access_token = 'fRhj7mPtPagAAAAAAAAAASeTXJfQ0o5I-fN8jYHQ5q7F5Pajc8JArs3srMlzpn2s'
-         
-file_from = "D:/WhiteHat/Projects/Python/txt/test.txt"
-
-file_to = "/AUTOMATION-P102/"     
-
-while True:   
 
 
-    dbx = dropbox.Dropbox(access_token)
+access_token = "fRhj7mPtPagAAAAAAAAAASeTXJfQ0o5I-fN8jYHQ5q7F5Pajc8JArs3srMlzpn2s"
 
-    with open(file_from, 'rb') as f:
-        dbx.files_upload(f.read(), file_to)
+"""file_from = "D:/WhiteHat/Projects/Python/txt/test.txt"
+file_to="/AUTOMATION-P102/"+"file1.txt"
+dbx = dropbox.Dropbox(access_token)
 
-    print("uploaded1")
+with open(file_from, 'rb') as f:
+      dbx.files_upload(f.read(), file_to,mode=dropbox.files.WriteMode.overwrite)
+      print("file uploaded")"""
+while True:
+  if ((start_time - time.time()) <= 60 ):
+     number = random.randint(0,100)
+     name = "file"+ str(number)+".txt"
+    
+     if not os.path.exists(name):
+            open(name,'a').close()
 
-
-"""if ((start_time - time.time()) >= 3 ):
-
-
-     file_from = open("file1.txt" , 'w')
-     file_from.write("hi this is sai charan")
-     file_from.close()       
-
-     file_to = "/AUTOMATION-P102/"
+     file = name
+     file_to = "/AUTOMATION-P102/"+name
 
 
      dbx = dropbox.Dropbox(access_token)
 
-     with open(file_from, 'rb') as f:
-            dbx.files_upload(f.read(), file_to)
-                
-            print("uploaded")
+     with open(file, 'rb') as f:
+            dbx.files_upload(f.read(), file_to,mode=dropbox.files.WriteMode.overwrite)
+            print(name+" uploaded")
 
-elif ((start_time - time.time()) >= 300 ):
+"""elif ((start_time - time.time()) >= 300 ):
 
      file_from = open("file2.txt" , 'w')
      file_from.write("hi ")
@@ -98,8 +95,7 @@ elif ((start_time - time.time()) >=10800 ):
             dbx = dropbox.Dropbox(access_token)
 
             with open(file_from, 'rb') as f:
-                 dbx.files_upload(f.read(), file_to)
-                 
+                 dbx.files_upload(f.read(), file_to)                 
                  print("uploaded")"""
 
 
